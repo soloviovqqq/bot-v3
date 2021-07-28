@@ -8,7 +8,8 @@
         "php": "^7.3|^8.0",
         "grkamil/laravel-telegram-logging": "^1.4",
         "irazasyed/telegram-bot-sdk": "^3.4",
-        "laravel/lumen-framework": "^8.0"
+        "laravel/lumen-framework": "^8.0",
+        "linwj/binance": "^2.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

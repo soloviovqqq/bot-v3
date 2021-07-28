@@ -13,14 +13,8 @@
 |
 */
 
-use Telegram\Bot\Api;
-
 $router->get('/', function () use ($router) {
-    $telegram = app()->make(Api::class);
-    $telegram->sendMessage([
-        'chat_id' => env('TELEGRAM_CHAT_ID'),
-        'text' => '$message',
-    ]);
+    (app()->make(\App\Utils\BinanceService\BinanceService::class))->sendPrice();
 
     return $router->app->version();
 });
