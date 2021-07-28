@@ -2,28 +2,41 @@
 
 namespace App\Console;
 
+use Spatie\ShortSchedule\ShortSchedule;
 use App\Console\Commands\SendPriceCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
+use Spatie\ShortSchedule\Commands\ShortScheduleRunCommand;
 
+/**
+ * Class Kernel
+ * @package App\Console
+ */
 class Kernel extends ConsoleKernel
 {
     /**
-     * The Artisan commands provided by your application.
-     *
      * @var array
      */
     protected $commands = [
         SendPriceCommand::class,
+        ShortScheduleRunCommand::class,
     ];
 
     /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
+     * @param Schedule $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
+
+    }
+
+    /**
+     * @param ShortSchedule $shortSchedule
+     * @return void
+     */
+    protected function shortSchedule(ShortSchedule $shortSchedule): void
+    {
+        $shortSchedule->command('binance:send_price')->everySeconds(5);
     }
 }
